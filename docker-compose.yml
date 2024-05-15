@@ -1,0 +1,33 @@
+version: '3.3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: petTrackMx
+    #restart: always
+    depends_on:
+      - db
+    ports:
+      - 8000:8000
+    volumes: 
+      - ./petTrackMx/:/app
+
+  db:
+    image: mariadb
+    container_name: petTrackMx-db
+    #restart: always
+    environment:
+      MYSQL_DATABASE: petTrackMxdb
+      MYSQL_USER: petTrackMxdb_user
+      MYSQL_PASSWORD: petTrackMxdb123
+      MYSQL_ROOT_PASSWORD: petThgam39+
+    volumes:
+      - db:/var/lib/mysql
+    ports:
+      - 3310:3306
+ 
+volumes:
+  db:    
+
