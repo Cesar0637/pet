@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>
-      {% block titulo %} 
-      {% endblock titulo %}
+      {% block titulo %}{% endblock titulo %}
     </title>
     <link rel="stylesheet" href="{% static 'vendors/simple-line-icons/css/simple-line-icons.css' %}">
     <link rel="stylesheet" href="{% static 'vendors/flag-icon-css/css/flag-icon.min.css' %}">
@@ -17,7 +17,7 @@
       body {
         margin: 0;
         padding: 0;
-    }
+      }
       body, .content-wrapper {
         min-height: 100vh;
         background-image: url('{% static 'images/fondoPetTrack.png' %}');
@@ -111,7 +111,7 @@
                   </a>
                   <div class="collapse" id="auth">
                     <ul class="nav flex-column sub-menu">
-                      <li class="nav-item"> <a class="nav-link" href="{% url 'bienvenida'%}"> Bienvenida </a></li>
+                      <li class="nav-item"> <a class="nav-link" href="{% url 'bienvenida'%}"> Mapa </a></li>
                     </ul>
                   </div>
                 </li>
@@ -129,6 +129,17 @@
                       {% else %}
                         <li class="nav-item"> <a class="nav-link" href="{% url 'perfil'%}"> Crear Perfil </a></li>
                       {% endif %}
+                      
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'nueva_convocatoria' %}">
+                            <span class="menu-title text-secondary">Agregar Mascota</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'mascotas_lista' %}">
+                            <span class="menu-title text-secondary">Lista Mascota</span>
+                        </a>
+                      </li>
                       <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">
                             <span class="menu-title text-secondary">Cerrar sesión</span>
@@ -152,7 +163,18 @@
                             <li class="nav-item"> <a class="nav-link" href="{% url 'lista' %}"> Usuarios del sistema </a></li>
                           </ul>
                         </div>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'mascotas_lista' %}">
+                              <span class="menu-title text-secondary">Lista Mascota</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'nueva_convocatoria' %}">
+                              <span class="menu-title text-secondary">Agregar Mascota</span>
+                          </a>
+                        </li>
                       </li>
+                      
                       <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">
                             <span class="menu-title text-secondary">Cerrar sesión</span>

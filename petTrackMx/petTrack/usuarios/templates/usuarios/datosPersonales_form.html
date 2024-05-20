@@ -1,28 +1,41 @@
-{% extends 'base.html' %}
-{% load static %}
-
 {% block titulo %}
-    {{ accion }} Encargado
+<<<<<<< HEAD
+    {{ accion }} 
 {% endblock titulo %}
 
 {% block encabezado %}
-    {{ accion }} Datos del equipo: {{ request.user }} ENCARGADO
+    {{ accion }} Datos del usuario: {{ request.user }} 
+=======
+    {{ accion }} Perfil
+{% endblock titulo %}
+
+{% block encabezado %}
+    <!-- Encabezado de la página -->
+    {{ accion }} Datos del usuario: {{ request.user }}
+>>>>>>> fa33838cd8758d2a64dde826f36ca23886cf39c9
 {% endblock encabezado %}
 
 {% block contenido %}
+    <!-- Contenido principal -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
+                        <!-- Formulario de edición de perfil -->
                         <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form.as_p }}
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <button class="btn btn-success btn-block" type="submit">Guardar</button>
+<<<<<<< HEAD
+=======
+                                    <!-- Botón para guardar los cambios -->
+>>>>>>> fa33838cd8758d2a64dde826f36ca23886cf39c9
+                                    <button class="btn btn-dark btn-block" type="submit">Guardar</button>
                                 </div>
                                 <div class="col-md-6">
+                                    <!-- Botón para cancelar y regresar -->
                                     <a class="btn btn-danger btn-block" href="{% url 'bienvenida' %}">Cancelar</a>
                                 </div>
                             </div>
@@ -35,5 +48,6 @@
 {% endblock contenido %}
 
 {% block scripts %}
+    <!-- Scripts personalizados -->
     <script src="{% static 'dist/js/funciones.js' %}"></script>
 {% endblock scripts %}

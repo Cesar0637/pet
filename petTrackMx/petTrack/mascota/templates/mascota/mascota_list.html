@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Lista de Mascotas
+{% endblock titulo %}
+
+{% block encabezado %}
+    Lista de Mascotas
+{% endblock encabezado %}
+
+{% block contenido %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}alert-danger{% else %}alert-success{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class="container mt-4">
+        <div class="table-responsive">
+            <table class="table table-sm" style="border: 2px solid grey;">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">Nombre</th>
+                        <th style="width: 20%;">Especie</th>
+                        <th style="width: 20%;">Raza</th>
+                        <th style="width: 10%;">Edad</th>
+                        {% for grupo in request.user.groups.all %} 
+                            {% if 'Administrador' in grupo.name %}
+                                <th style="width: 25%;">Usuario</th>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        <th style="width: 25%;">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mascota in object_list  %}
+                        <tr>
+                            <td>{{ mascota.nombre }}</td>
+                            <td>{{ mascota.especie }}</td>
+                            <td>{{ mascota.raza }}</td>
+                            <td>{{ mascota.edad }}</td>
+                            {% for grupo in request.user.groups.all %} 
+                                {% if 'Administrador' in grupo.name %}
+                                    <td>{{ mascota.user.username }}</td>
+                                {% endif %}
+                            {% endfor %}
+                            <td>
+                                <!-- Opciones -->
+
+                                    <a href="{% url 'eliminar_mascota' mascota.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                                    <a href="{% url 'editar_mascota' mascota.id %}" class="btn btn-dark btn-sm">Editar</a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="5">
+                                <p>No existen mascotas registrados</p>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock contenido %}

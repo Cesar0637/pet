@@ -1,24 +1,17 @@
 from pathlib import Path
 import os
 from django.urls import reverse_lazy
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
+# Configuración de seguridad
 SECRET_KEY = 'django-insecure-s7sx1et7l_@vdku4-s9%!e7-1i^ktvkd(teu2xh*g)wb3#4=l2'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = ['*']
 
-
-# Application definition
-
+# Aplicaciones instaladas en el proyecto
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -27,8 +20,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'usuarios',
+    'mascota'
 ]
 
+# Middlewares utilizados en el proyecto
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -39,8 +34,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Configuración de la URL principal
 ROOT_URLCONF = 'petTrack.urls'
 
+# Plantillas de Django
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -57,12 +54,10 @@ TEMPLATES = [
     },
 ]
 
+# Configuración de la aplicación WSGI
 WSGI_APPLICATION = 'petTrack.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
+# Configuración de la base de datos
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -70,10 +65,7 @@ DATABASES = {
     }
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
-
+# Configuración de validación de contraseñas
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -89,60 +81,34 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/4.0/topics/i18n/
-
+# Configuración de internacionalización
 LANGUAGE_CODE = 'es-mx'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
-
+# Configuración de archivos estáticos
 STATIC_URL = 'static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
 )
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+# Configuración de redireccionamiento de inicio de sesión
 LOGIN_URL = reverse_lazy('login')
 LOGIN_REDIRECT_URL = reverse_lazy('bienvenida')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
-#Es donde se almacenaran los documentos de usuarios
+# Configuración de archivos multimedia
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Servicio de correo
+# Configuración de servicio de correo
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-# Se necesita una cuanta google con contraseña de aplicasion
 EMAIL_HOST_USER = 'caphdfa@gmail.com'
 EMAIL_HOST_PASSWORD = 'ivlyfomyekzovmpx'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 EMAIL_SUBJECT_PREFIX = '[My Website]'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'caphdfa@gmail.com'
-EMAIL_HOST_PASSWORD = 'ivlyfomyekzovmpx'
-DEFAULT_FROM_EMAIL = 'caphdfa@gmail.com'
-ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Reset password'
-ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 2
-ACCOUNT_EMAIL_CONFIRMATION_COOLDOWN_SECONDS = 60
-ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/profile/'
-ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/login/'
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # O la configuración que uses
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_SSL = False

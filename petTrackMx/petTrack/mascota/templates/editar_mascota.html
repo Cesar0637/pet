@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+    Editar Mascota - {{ mascota.nombre }}
+{% endblock titulo %}
+
+{% block encabezado %}
+    <h1>Editar Mascota - {{ mascota.nombre }}</h1>
+{% endblock encabezado %}
+
+{% block contenido %}
+    {% if messages %}
+    <div class="alert-container">
+        {% for message in messages %}
+        <div class="alert {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}alert-danger{% else %}alert-success{% endif %}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="container">
+        <form method="post" class="post-form">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {{ field.errors }}
+            </div>
+            {% endfor %}
+            
+            <div class="button-group">
+                <button class="btn btn-dark btn-fw btn-block font-weight-medium auth-form-btn" type="submit">Guardar Cambios</button>
+                <a class="btn btn-danger btn-fw btn-block font-weight-medium auth-form-btn" href="{% url 'mascotas_lista' %}">Cancelar</a>
+            </div>
+        </form>
+    </div>
+{% endblock contenido %}

@@ -2,40 +2,55 @@
 {% load static %}
 
 {% block encabezado %}
-<h1>Localizacion de mascotas</h1>
+<<<<<<< HEAD
+=======
+<!-- Encabezado de la página -->
+>>>>>>> fa33838cd8758d2a64dde826f36ca23886cf39c9
+<h1>Localización de mascotas</h1>
 {% endblock encabezado %}
 
 {% block titulo %}
-Localizacion de mascotas
+<<<<<<< HEAD
+=======
+<!-- Título de la página -->
+>>>>>>> fa33838cd8758d2a64dde826f36ca23886cf39c9
+Localización de mascotas
 {% endblock titulo %}
 
 {% block contenido %}
-
+<!-- Contenido principal -->
 <div class="row">
     <div class="col-md-4">
+        <!-- Lista de mascotas -->
         <p class="lead">Estas son tus Mascotas</p>
-
         <ol class="list-group">
-
             {% for location in locations %}
             <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="ms-2 me-auto">
-                <div class="fw-bold">{{ location.name }}</div>
-                {{ location.address }}
+<<<<<<< HEAD
+=======
+                    <!-- Detalles de la localización -->
+>>>>>>> fa33838cd8758d2a64dde826f36ca23886cf39c9
+                    <div class="fw-bold">Lat: {{ location.lat }}, Lng: {{ location.lng }}</div>
                 </div>
             </li>
             {% endfor %}
         </ol>
     </div>
     <div class="col-md-8">
+        <!-- Mapa de la localización -->
         {{ map|safe }}
     </div>
 </div>
-
 {% endblock contenido %}
 
 {% block imagenes %}
+<!-- Sección de imágenes (opcional) -->
 {% endblock imagenes %}
     
 {% block contenido2 %}
+<<<<<<< HEAD
+=======
+<!-- Contenido adicional (opcional) -->
+>>>>>>> fa33838cd8758d2a64dde826f36ca23886cf39c9
 {% endblock contenido2 %}
